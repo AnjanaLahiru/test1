@@ -1,0 +1,49 @@
+﻿@model ID_Request.Models.RequestData
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="container shadow rounded mt-4">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            @using (Html.BeginForm())
+            {
+                <div class="mb-3">
+                    <label class="form-label">Requested By</label>
+                    @Html.TextBoxFor(modelItem => modelItem.EmployeeId, new { @class = "form-controll form-controll-sm" })
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Section</label>
+                    @Html.TextBoxFor(modelItem => modelItem.Section, new { @class = "form-controll form-controll-sm" })
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Date</label>
+                    @Html.TextBoxFor(modelItem => modelItem.RequestedDate, new { @class = "form-controll form-controll-sm" })
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Employee Number</label>
+                    @Html.TextBoxFor(modelItem => modelItem.EmployeeId, new { @class = "form-controll form-controll-sm" })
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Employee Name</label>
+                    @Html.TextBoxFor(modelItem => modelItem.EmployeeName, new { @class = "form-controll form-controll-sm" })
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Reason</label>
+                    @Html.TextBoxFor(modelItem => modelItem.Reason, new { @class = "form-controll form-controll-sm" })
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Status</label>
+                    @Html.TextBoxFor(modelItem => modelItem.Status, new { @class = "form-controll form-controll-sm" })
+                </div>
+                <div class="mb-3">
+                    <button type="button" class="btn btn-sm btn-success" onclick="refreshData()">Refresh</button>
+                    <button type="button" class="btn btn-sm btn-success" onclick="addItem()">Add</button>
+                    <button type="button" class="btn btn-sm btn-success" onclick="clearForm()">Clear</button>
+                    <button type="button" class="btn btn-sm btn-success" onclick="deleteSelected()">Delete</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
