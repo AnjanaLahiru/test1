@@ -13,5 +13,9 @@ namespace ID_Request.Controllers
         {
             return View();
         }
+        public ActionResult Create()
+        {
+            return View();
+        }
     }
 }

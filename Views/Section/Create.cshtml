@@ -1,16 +1,20 @@
 ﻿@model ID_Request.Models.RequestData
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "create";
 }
-
-<div class="container shadow rounded mt-4">
+<h4></h4>
+<!--
+<div class="container mt-4">
     <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="col-sm-6 col-md-6 col-lg-6 offset-3 shadow rounded">
             @using (Html.BeginForm())
             {
+                <div class="mt-2">
+                    <h3 class="text-center">Add Request</h3>
+                </div>
                 <div class="mb-3">
                     <label class="form-label">Requested By</label>
-                    @Html.TextBoxFor(modelItem => modelItem.EmployeeId, new { @class = "form-controll form-controll-sm" })
+                    @Html.TextBoxFor(modelItem => modelItem.RequestedBy, new { @class = "form-controll form-controll-sm" })
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Section</label>
@@ -37,6 +41,24 @@
                     @Html.TextBoxFor(modelItem => modelItem.Status, new { @class = "form-controll form-controll-sm" })
                 </div>
                 <div class="mb-3">
+                    <h4>Requests</h4>
+                    <table id="RequestData" class="table table-striped table-responsive table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Request Date</th>
+                                <th>Request By</th>
+                                <th>Section</th>
+                                <th>Employee Name</th>
+                                <th>Employee Id</th>
+                                <th>Reason</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mb-3">
                     <button type="button" class="btn btn-sm btn-success" onclick="refreshData()">Refresh</button>
                     <button type="button" class="btn btn-sm btn-success" onclick="addItem()">Add</button>
                     <button type="button" class="btn btn-sm btn-success" onclick="clearForm()">Clear</button>
@@ -46,4 +68,4 @@
         </div>
     </div>
 </div>
-
+-->
