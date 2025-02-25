@@ -12,7 +12,7 @@ namespace ID_Request.Controllers
     public class SectionController : Controller
     {
         private Data _dataRepository = new Data();
-
+        //new comment
         // GET: Section
         public ActionResult Index()
         {
