@@ -11,7 +11,7 @@
         <!-- Form column (left side) -->
         <div class="col-md-5 col-lg-4">
             <div class="shadow rounded p-3">
-                @using (Html.BeginForm())
+                @using (Html.BeginForm("Index", "Section", FormMethod.Post, new { id = "requestForm" }))
                 {
                     <div class="mt-2">
                         <h3 class="text-center">Add Request</h3>
@@ -26,7 +26,8 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Date</label>
-                        @Html.TextBoxFor(modelItem => modelItem.RequestedDate, new { @class = "form-control form-control-sm", type = "date" })
+                        @Html.TextBoxFor(modelItem => modelItem.RequestedDate, new { @class = "form-control form-control-sm", @readonly = "readonly" })
+                        @Html.HiddenFor(modelItem => modelItem.RequestedDate)
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Employee Number</label>
@@ -86,6 +87,9 @@
 <script src="~/Scripts/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
+        // Set the current date on page load
+        setCurrentDate();
+
         // Initial data load
         refreshData();
 
@@ -96,6 +100,13 @@
             loadRequestData(id);
         });
     });
+
+    function setCurrentDate() {
+        // Get current date in YYYY-MM-DD format
+        var today = new Date();
+        var formattedDate = today.toISOString().split('T')[0];
+        $('#RequestedDate').val(formattedDate);
+    }
 
     function refreshData() {
         $.ajax({
@@ -143,7 +154,9 @@
                 $('#Id').val(data.Id);
                 $('#RequestedBy').val(data.RequestedBy);
                 $('#Section').val(data.Section);
-                $('#RequestedDate').val(formatDate(data.RequestedDate));
+                // Don't update the date from loaded data
+                // Instead, keep the current date
+                setCurrentDate();
                 $('#EmployeeId').val(data.EmployeeId);
                 $('#EmployeeName').val(data.EmployeeName);
                 $('#Reason').val(data.Reason);
@@ -157,6 +170,8 @@
     }
 
     function addItem() {
+        // Make sure date is current before saving
+        setCurrentDate();
         SaveRequestData();
     }
 
@@ -226,7 +241,8 @@
         $('#Id').val('');
         $('#RequestedBy').val('');
         $('#Section').val('');
-        $('#RequestedDate').val('');
+        // Set current date instead of clearing
+        setCurrentDate();
         $('#EmployeeId').val('');
         $('#EmployeeName').val('');
         $('#Reason').val(''); // Reset dropdown to default
