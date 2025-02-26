@@ -13,7 +13,7 @@ namespace ID_Request.Controllers
     {
         private Data _dataRepository = new Data();
         //new comment
-        // GET: Section
+        // GET: Section 
         public ActionResult Index()
         {
             return View();
